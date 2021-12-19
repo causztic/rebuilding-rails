@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+gem 'rulers'
+gem 'puma' # had to install this additionally for rackup to work
