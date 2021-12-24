@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "rulers/version"
-require_relative "rulers/routing"
+require "rulers/version"
+require "rulers/routing"
+require "rulers/util"
+require "rulers/dependencies"
 
 module Rulers
   class Application
@@ -19,7 +21,7 @@ module Rulers
       text = controller.send(act)
       [200, {'Content-Type'=>'text/html'}, [text]]
     rescue StandardError => e
-      [500, { 'Content-Type' => 'text/html' }, ['<div>Unhandled Error</div>']]
+      [500, { 'Content-Type' => 'text/html' }, ["<div>#{e}</div>"]]
     end
   end
 

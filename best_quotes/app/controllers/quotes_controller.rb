@@ -1,6 +1,6 @@
 class QuotesController < Rulers::Controller
   def a_quote
-    'There is nothing either good or bad, but thinking makes it so.' +
+    'There is nothing either good or bad, buttt thinking makes it so.' +
     "\n<code>\n#{env}\n</code>"
   end
 
