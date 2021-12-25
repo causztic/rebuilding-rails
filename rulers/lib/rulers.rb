@@ -4,6 +4,7 @@ require "rulers/version"
 require "rulers/routing"
 require "rulers/util"
 require "rulers/dependencies"
+require "rulers/controller"
 
 module Rulers
   class Application
@@ -22,16 +23,6 @@ module Rulers
       [200, {'Content-Type'=>'text/html'}, [text]]
     rescue StandardError => e
       [500, { 'Content-Type' => 'text/html' }, ["<div>#{e}</div>"]]
-    end
-  end
-
-  class Controller
-    def initialize(env)
-      @env = env
-    end
-
-    def env
-      @env
     end
   end
 end

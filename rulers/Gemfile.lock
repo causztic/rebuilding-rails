@@ -1,13 +1,15 @@
 PATH
   remote: .
   specs:
-    rulers (0.0.1)
+    rulers (0.0.4)
+      erubis
       rack
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    erubis (2.7.0)
     minitest (5.15.0)
     parallel (1.21.0)
     parser (3.0.3.2)
@@ -34,6 +36,7 @@ GEM
     unicode-display_width (2.1.0)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-darwin-21
 
 DEPENDENCIES
@@ -44,4 +47,4 @@ DEPENDENCIES
   rulers!
 
 BUNDLED WITH
-   2.2.22
+   2.2.33

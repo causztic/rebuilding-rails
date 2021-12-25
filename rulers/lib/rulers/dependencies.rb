@@ -2,12 +2,11 @@
 class Object
   def self.const_missing(c)
     # class variable to keep a map of constant names: 
-    # if value is found, it has been required already and const_get should work
     # if value not found, require the respective file and attempt to find a similarly named class/module 
 
     @looked_for ||= {}
     const_name = c.to_s
-    return Object.const_get(c) if @looked_for[const_name]
+    raise "#{const_name} not found." if @looked_for[const_name]
     
     @looked_for[const_name] = 1
     file = Rulers.to_underscore(c.to_s)

@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
   spec.add_runtime_dependency "rack"
+  spec.add_runtime_dependency "erubis"
   spec.add_development_dependency "rack-test"
   spec.add_development_dependency "minitest"
 
