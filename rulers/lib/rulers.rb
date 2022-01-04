@@ -21,7 +21,13 @@ module Rulers
       klass, act = get_controller_and_action(env)
       controller = klass.new(env)
       text = controller.send(act)
-      [200, {'Content-Type'=>'text/html'}, [text]]
+
+      response = controller.get_response
+      if response
+        [response.status, response.headers, [response.body].flatten]
+      else
+        [200, {'Content-Type'=>'text/html'}, [text]]
+      end
     rescue StandardError => e
       [500, { 'Content-Type' => 'text/html' }, ["<div>#{e}</div>"]]
     end

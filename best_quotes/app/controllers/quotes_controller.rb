@@ -1,4 +1,11 @@
 class QuotesController < Rulers::Controller
+  def show
+    @quote = FileModel.find(params["id"])
+    ua = request.user_agent
+
+    render_response :quote, ua: ua
+  end
+
   def a_quote
     @noun = :winking
     render :a_quote

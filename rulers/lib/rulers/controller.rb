@@ -1,5 +1,7 @@
 require "erubis"
+require "rack/request"
 require "rulers/file_model"
+
 module Rulers
   class Controller
     include Rulers::Model
@@ -10,6 +12,25 @@ module Rulers
 
     def env
       @env
+    end
+
+    def request
+      @request ||= Rack::Request.new(env)
+    end
+
+    def params
+      request.params
+    end
+
+    def get_response
+      @response
+    end
+
+    def response(text, status = 200, headers = {})
+      raise "Already responded!" if @response
+
+      flattened_text = [text].flatten
+      @response = Rack::Response.new(flattened_text, status, headers)
     end
 
     def controller_name
@@ -32,6 +53,10 @@ module Rulers
 
       eruby = Erubis::Eruby.new(template)
       eruby.result(locals.merge(variables))
+    end
+
+    def render_response(*args)
+      response(render(*args))
     end
   end
 end
